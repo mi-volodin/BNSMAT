@@ -3,6 +3,10 @@
 This project is an example implementation of Branch and Sandwich algorithm in Matlab for bi-level MILP problems.
 The usage is provided by `main.m`
 
+The algorithm is implemented for scientific applications and, in fact, is not applicable to the real field cases, since MATLAB is not a good choice for it.
+
+*When the Julia implementation will be ready - I will put the link here.*
+
 ## Example
 
 ```Matlab
