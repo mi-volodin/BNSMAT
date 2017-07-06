@@ -1,0 +1,9 @@
+function initPartitions( obj, f_IUB)
+%INITPARTITIONS inits partitions structure
+%   Detailed explanation goes here
+    obj.partitions.add(struct('p', 1, ...
+                                'Lp', {{1}}, ...
+                                'f_IUB', f_IUB));
+%                                 'Xdomain', obj.Problem.getDomainX(), ...
+end
+
