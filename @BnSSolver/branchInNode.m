@@ -39,6 +39,11 @@ function [k1, k2] = branchInNode(obj, k, p )
     eSubset = edges(searchSet);
     longestEdge = max(eSubset);
     branchVarInd = min(searchSet(eSubset == longestEdge));
+    
+    % check if the node cannot be branched
+%     if ~(longestEdge > 0 + double(any(obj.intVarIndices == branchVarInd)))
+%         return;
+%     end
 %     branchVarInd = min(line(edges == longestEdge));
     %first iteration branch on y
 %     if obj.iterCtr == 1
@@ -139,7 +144,12 @@ function [k1, k2] = branchInNode(obj, k, p )
     % 3. If true - create new partition and update f_UB
     [ICtrue, Lp1, Lp2] = ICcheck(obj.partitions.dict(ppos).Lp);
     if ICtrue
-        obj.splitPartitionByLp(p, Lp1, Lp2);
+        k_in = obj.iterInfo.k_in;
+        if ~isempty(k_in) && any([Lp2{:}] == k_in)
+            obj.splitPartitionByLp(p, Lp2, Lp1);
+        else
+            obj.splitPartitionByLp(p, Lp1, Lp2);
+        end
     end
 end
 

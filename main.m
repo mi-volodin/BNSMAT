@@ -15,6 +15,6 @@ lc = [0; 0];
 uc = [8; 4];
 
 problemInstance = bp_milp(Co, Ao, Bo, ci, ai, bi, [1 2], lc, uc, 1); 
-slv = BnSSolver(problemInstance);
+slv = BnSSolver(problemInstance, 5);
 %problemInstance.testsolve()
 slv.solve();
