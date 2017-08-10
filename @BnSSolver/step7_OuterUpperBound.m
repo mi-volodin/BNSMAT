@@ -89,6 +89,7 @@ function step7_OuterUpperBound( obj )
     OFCandidates = nodesInL;
     for l = nodesInL
         if ~(obj.nodes.dict(allk == l).F_LB > F_UB - obj.eps_F)
+            % ADD CLOSED NODES CHECK HERE
             %outerFathom node list
             OFCandidates(OFCandidates == l) = [];
         end 
