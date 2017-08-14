@@ -1,5 +1,5 @@
 clear;
-case_mat = 'ExampleMatrices/2_bus_case1-1.mat';
+case_mat = 'ExampleMatrices/2_bus_case1-2.mat';
 
 load(case_mat);
 
