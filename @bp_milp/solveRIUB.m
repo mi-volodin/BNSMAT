@@ -60,7 +60,9 @@ function [ feas, f_RIUB, y_RIUB ] = solveRIUB( obj, domain )
             cy = obj.ci(xdim + (1:ydim));
             ymin = obj.lc(xdim + (1:ydim));
             ymax = obj.uc(xdim + (1:ydim)); 
-            f_max = sum(cy(cy > 0) * ymax) + sum(cy(cy < 0) * ymin) + f_overest;
+            cymask = cy > 0;
+            f_max = sum(cy(cymask) * ymax(cymask))...
+                  + sum(cy(~cymask) * ymin(~cymask)) + f_overest;
             if isnan(f_max) || (f_max < 0 && isinf(f_max))
                 f_max = Inf;
             end
